@@ -1,0 +1,123 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fcharset0 Calibri;}{\f1\froman\fcharset0 Cambria;}{\f2\fmodern\fcharset0 Courier New;}}
+{\colortbl ;\red255\green255\blue0;}
+{\stylesheet{ Normal;}{\s1 heading 1;}}
+{\*\generator Msftedit 5.41.15.1507;}\viewkind4\uc1\pard\sa200\sl276\slmult1\f0\fs22\par
+\trowd\trgaph115\trleft-115\trpaddl115\trpaddr115\trpaddfl3\trpaddfr3
+\clbrdrt\brdrw90\brdrs\brdrcf1\clbrdrb\brdrw90\brdrs\brdrcf1 \cellx3721\pard\intbl\f1\fs72 User\rquote s Manual\cell\row\trowd\trgaph115\trleft-115\trpaddl115\trpaddr115\trpaddfl3\trpaddfr3
+\clbrdrt\brdrw90\brdrs\brdrcf1\clbrdrb\brdrw90\brdrs\brdrcf1 \cellx3721\pard\intbl\f0\fs40 Agent based simulation environment,           Sport E-Vac\cell\row\trowd\trgaph115\trleft-115\trpaddl115\trpaddr115\trpaddfl3\trpaddfr3
+\clbrdrt\brdrw90\brdrs\brdrcf1\clbrdrb\brdrw90\brdrs\brdrcf1 \cellx3721\pard\intbl\fs28 Matthew Bennett\par
+Mike Johnson\par
+\par
+Last revised 5/6/2008\cell\row\pard\sa200\sl276\slmult1\fs22\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32\page Obtaining the software\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22 The latest development version is available from the subversion repository at  \par
+Svn+ssh://orca.st.usm.edu/repos/evacsim\par
+This branch contains a subdirectory with all the code called renderer, as well as other directories containing fundamental data such as demo scripts, Sketch up models,  OBJ files, camera data files, and documentation.\par
+To compile the application in Windows, MinGW may be used. All libraries needed  are located in the lib directory of the repository. Those using Dev-CPP 5.0.9.12 provide a .dev file in the renderer folder for easy compilation. \par
+An installer for release versions is available by visiting the Sport E-Vac website or via special request to the development team.\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32 Purpose of this document\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22 The purpose of this document is to familiarize the end-user with the agent based simulation component of the USM Sport E-Vac software suite. This is the core simulation engine, but it may not be where you do your work. Other packages sit on top of this package, in order to enable a more powerful interface. The interface to this package is a console text-prompt that accepts a variety of commands, as well as a 3-d fly-based navigation system requiring use of the mouse and arrow keys. The console commands provided are the main scope of this document, as well as a basic overview of our data process for loading simulation scenarios already generated elsewhere, by hand or by a GUI.\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32 Software / Data lifecycle\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22 A map (see glossary of terms) is generated in Google Sketch up Professional Edition or some other modeler that supports export to OBJ. Once this map is error free, it may be loaded either into the Scenario Editor (separate software package), or directly into the Agent based simulation environment. \par
+\kerning32\b\f1\fs32 Conventions\par
+\kerning0\b0\f0\fs22 All measurements used are standard Imperial measurements (feet, seconds) . The maps loaded should be in units of Feet. \page\kerning32\b\f1\fs32 List of supported file formats\kerning0\b0\f0\fs22\par
+\ul Map representation and Model representation\par
+\pard{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\fi-360\li720\sa200\sl276\slmult1\ulnone OBJ. This is a standard 3-d file format developed by WaveFront technologies. It is possible to export to this format from several 3-d geometry editors, including Google Sketch up, Professional Edition, Maya, and 3-d Studio Max. OBJ models are stored in the OBJ directory.\par
+\pard{\pntext\f0 2.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart2\pndec{\pntxta.}}
+\fi-360\li720\sa200\sl276\slmult1 Possible future 3-d formats include 3ds, dwg, and wrl. No support for any of these formats currently exists in the Simulation environment. \par
+\pard\sa200\sl276\slmult1\ul Camera representation file\par
+\ulnone A .CAM file is a text file consisting of three lines for each camera. Each of the three lines is a vector representing Direction, Rotation, and Up in that order. Currently a CAM file may hold between one and nine total cameras. \par
+\ul Script files\par
+\ulnone A script file is a text file consisting of a list of console commands, corresponding with a single run of the simulation. A script usually contains console commands, one per line in order of execution, and a quit command at the end of the script. Scripts are stored in the scripts directory.\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32\page File I/O console commands\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22\par
+\f2 Loadcams <file.cam>\par
+\f0 Loads a file consisting of standard camera representations. This file is created by choosing cameras in camera mode, then  using the savecams command. This command can be called at any time, and is not mandatory. Only nine cams may be loaded at once. Checks in the scripts directory unless an explicit path is given.\par
+\par
+\f2 Map <file.obj>\par
+\f0 Loads an OBJ file (Alias wave front 3d model) to be used as the surface map representation of the stadium. This command is mandatory before any simulation can take place. Only one map may be loaded at a time. Be aware that for large maps, the loading process may take several seconds. Loads from the OBJ directory unless an explicit path is given.\par
+\f2\par
+Model\tab <file.obj>\par
+\f0 Loads an OBJ file (Alias wave front 3d model) as the model (detailed) representation of the stadium.  This command can be called at any time, and is not mandatory. Only one model may be loaded at once. It is up to the discretion of the user that the file loaded for the model matches the file used for the map.  A filename convention is recommended: for a map file stadium.obj, name the corresponding model as stadium_detail.obj. This way, it will be easy to correlate map files with their corresponding model files. Loads from the OBJ directory unless an explicit path is given.\par
+\par
+\f2 Savecams <file.cam>\par
+\f0 Writes a file consisting of standard camera representations. This command is not mandatory. Saves to the scripts directory unless an explicit path is given.\par
+\f2\par
+Script <file>\par
+\f0 Loads a script file and immediately begins execution of that script. Checks in the scripts directory unless an explicit path is given.\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32\page Simulation parameter console commands\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22\par
+\f2 acc[1..10]\par
+\f0 Sets the physical accuracy. 1 means the largest possible step size is used, with some errors. 10 means that the smallest possible step size is used, with fewer errors.\par
+\f2\par
+physics [on | off]\par
+\f0 Toggles the collision detection and response portion of physics. On by default. This is needed for shrapnel effects and crushing, pushing of entities.\par
+\par
+\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32\page Simulation events console commands\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22\par
+\f2 bomber [inRegion <region> | agent <agentid> ]\par
+\f0 Creates a suicide bomber in a region, from the agents in that region. If there are no agents in the region, no bomber is created.\par
+\par
+\f2 Explode <region> <power>\par
+Explode <region> <blast radius> <shrapnel radius>\par
+\f0 Creates an explosion in the center of a region. The latter command is a tunable version of the former.\par
+\par
+\f2 Goal [<targetRegion> | egress | shelter] [agent <a> | region <r>]\par
+\f0 Sets the goals for an agent or all the agents in a region to either proceed to the nearest shelter, egress, or proceed to a specific target.\par
+\par
+\f2 shooter [inRegion <region> | agent <agentid> ]\par
+\f0 Creates an active shooter in a region, from the agents in that region. If there are no agents in the region, no shooter is created.\par
+\par
+\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32\page Appendix A: Debugging console commands\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22\par
+\f2 Floors [on | off]\par
+\f0 Toggles drawing of the floors, used only for occlusion of shrapnel, active shooter, and vision subsystems.\par
+\f2 Portals [on | off]\par
+\f0 Toggles drawing of the portals, used in navigation.\par
+\f2 surfaces [on | off]\par
+\f0 Toggles drawing of the walkable surfaces, used only for navigation.\par
+\f2 Walls [on | off]\par
+\f0 Toggles drawing of the walls, used only for physical barricades and crushing.\par
+\f2 Label [regions | components | distances | off]\par
+\f0 Toggles labeling of various aspects of the map.\par
+\f2 Color [regions | components | errors]\par
+\f0 Toggles color coding of various aspects of the map.\par
+\pard\keepn\s1\sb240\sa60\sl276\slmult1\kerning32\b\f1\fs32\page Glossary of common terms\par
+\pard\sa200\sl276\slmult1\kerning0\b0\f0\fs22\par
+Accuracy \endash  The accuracy is a simulation parameter that affects the step-size for physical calculations. With lower accuracy, more errors occur, but the simulation runs faster. With high accuracy, fewer errors occur, but the simulation takes much longer to run in wall time.\par
+Agent \endash  A simulation actor representing a person. Generally, agents are represented in similar appearance and have a default goal of Egress. \par
+Agent-based simulation environment \endash  The module of Sport E-Vac that this document is written for. An environment for producing and rendering the simulation using an agent-based model. Other packages may sit atop for scenario and parameter editing.\par
+Blast Radius \endash  the radius of a circle defining death or debilitating injury from the center of an explosion, regardless of shrapnel.\par
+Cam File \endash  A file containing between one and nine camera representations. \par
+Camera \endash  One single representation of a view of the model or map.\par
+Camera Mode \endash  A mode in which some representation (Map or Model) has been loaded and is viewable, but simulation is paused. This mode is used to fly around and place cameras.\par
+Capture mode \endash  A mode in which simulation occurs, but the view switches between all cameras loaded. This mode is used for producing movies. It is much slower than regular simulation mode, and should not be used for real-time demos.\par
+Chase \endash  A steering behavior that causes one agent to seek and possibly apprehend another agent.\par
+Components \endash  A component is a group of regions in the map separated by other regions via a bottleneck.\par
+Convex \endash  A property of a polygon that is necessary for any polygon that is a map region. It is important that convexity be understood. Check \cf1\ul http://en.wikipedia.org/wiki/Convex_polygon\cf0\ulnone  for a definition. \par
+Explosion \endash  An explosion consists of two things, a blast radius and a shrapnel group.\par
+Egress \endash  A type of goal in which an agent is determined to follow the shortest time perceived route out of the map, to an exit.\par
+Exit \endash  A special type of region that indicated a point of escape or entrance from a map.\par
+Force \endash  Agents are actively involved in physical simulation. This means that whenever an agent is motivated by some goal to move, any movement is the product of some physical force vector on that entity.\par
+Goal \endash  A goal is a representation of a portion of an agent\rquote s behavior.\par
+H M S \endash  Hours, minutes, seconds (time format)\par
+Ingress -- A type of goal in which an agent is determined to follow the shortest time perceived route from an exit to a specific region. \par
+Map \endash  A series of interconnected regions representing a walkable 3-d structure that is navigable by agents.\par
+Model \endash  A detailed photographic or artistic 3-d representation of the Map, used only for display / overlay but not for simulation.\par
+Movie \endash  A file which is the final output of a run of the simulation environment in capture mode. A movie consists of the view from one or four cameras over a period of time.\par
+Navigation \endash  Navigation is the process by which agents find a way across the map by using regions as guide points. A way from an agent\rquote s current location to a goal, or path, is a series of regions. \par
+Occlusion Map \endash  A map representing occluding geometry, used for ray tracing algorithms such as shooter.\par
+Region \endash  A region is an area of the map, which is the smallest unit of agent navigation. Steering behaviors make up the intra-region movement patterns for agents. \par
+Simulation mode \endash  The active simulation mode, in which agents are acting to commit to some goal as defined in a script or typed into the console. The default goal is egress.\par
+Sim time \endash  The amount of elapsed time which would be apparent to an agent within the simulation.\par
+Shooter \endash  A type of agent which causes casualties for a set period or until pursued by guard agents. \par
+Shrapnel \endash  Shrapnel is a spherical object that causes injury to agents based upon its momentum (speed x mass) at time of impact. A shrapnel group is associated with every explosion. It is independent of blast radius.\par
+Spawn \endash  The process of placing agents into a region and assigning them a default goal.\par
+Speed \endash  Speed refers to the magnitude of the velocity of a physical entity in the simulation.\par
+Steering behavior \endash  Steering behaviors are a group of tightly-coupled algorithms that translate goals, geometry information, and information about other agents into a force vector applied to an agent for a single given timestep.\par
+Wall time \endash  The amount of time which has elapsed in the real world during the time the simulation has taken place. This is the same as the total execution time for the simulation.\par
+}
+ 

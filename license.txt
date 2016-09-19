@@ -1,0 +1,13 @@
+ODE 0.9    (see license_ODE.txt LGPL/BSD)  http://www.ode.org
+SDL 1.2.12 (see license_SDL.txt LGPL) http://www.libsdl.org
+SDL_TTF 2.0.9
+SDL_mixer 1.2.8
+OpenGL 1.1 http://www.opengl.org
+libjpeg 6b
+VirtualDub v1.7.8 http://www.virtualdub.org/(GPL license, src included in dir vdub_src)
+
+The following are optional packages which are installed via a 3rd party installer:
+
+ImageMagick v6 http://www.imagemagick.org
+XViD Codec 1.1.2 http://www.xvid.org/
+

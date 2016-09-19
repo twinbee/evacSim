@@ -1,0 +1,77 @@
+BUG : Failure to load models twice.
+Reporter: M Bennett
+Date: 5/5/08
+
+Description: When a model is loaded more than once, not all of the geometry shows on the second load. This can be seen with the USM detail model.
+Reproduce: model usm_detail.obj, then model usm_detail.obj, then repeat until problem occurs
+
+Probable causes: memory leak in model, memory leak in parse.cpp
+
+=======================
+
+BUG : Scripts undocumented.
+Reporter: M Bennett
+Date: 5/5/08
+
+Description: The scripts should all include comments about what they were used for and when / who made them
+Reproduce: look in scripts folder
+
+Probable soln: minimum one-liner policy
+
+=======================
+
+
+BUG : Camera lock
+Reporter: M Bennett
+Date: 5/5/08
+
+Description: When a camera is moved into position, the mouse needs to be moved inorder to orient the camera properly
+Reproduce: load any map and navigate with the arrow keys BEFORE touching the mouse
+
+Probable soln: camera "nudging" as seen in billboard.cpp constructor (hack), fix quaternion.cpp or camera.cpp ti auto-nudge
+
+=======================
+
+BUG : font / cursor alignment
+Reporter: M Bennett
+Date: 5/5/08
+
+Description: the font / cursor alignment is off
+
+Probable soln: hud.cpp, font.cpp
+
+=======================
+
+BUG : OBJ loader does not open generic OBJ files
+Reporter: M Bennett
+Date: 5/5/08
+
+Description: the OBJ loader has been hand-written to handle files from sketchup exporter ONLY. It might need to be more robust in the future.
+
+Probable soln: rewrite parts of parse.cpp to handle generic obj files: loadpolylistobj(), loadregionlistobj()
+
+=======================
+
+BUG : explosion placement in tiny regions
+Reporter: M Bennett
+Date: 5/5/08
+
+Description: explosions can be created in regions too small for them, causing a program crash
+
+reproduction: create a region 1 ft x 1 ft and 'explode <region #> 1'.
+
+probable soln: change explosion.cpp or make an explosion factory method
+
+
+=======================
+
+BUG : cam files hard to find
+Reporter: M Bennett
+Date: 5/5/08
+
+Description: CAM files are hard to keep track of
+
+probable soln: create a directory for cam files and some way to list them out, link them to specific map files so that things don't get too confused with camera control
+
+=======================
+
