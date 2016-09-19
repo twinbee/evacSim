@@ -1,0 +1,36 @@
+acc 3
+load usm.obj
+model usm_detail.obj
+portals off
+walls off
+surfaces off
+loadcams e31cams2.txt
+
+
+
+spectatorsquad  996 12 916
+spectatorsquad  993 12 916
+spectatorsquad  992 12 446
+spectatorsquad  989 12 446
+spectatorsquad  988 12 446
+spectatorsquad  985 12 446
+spectatorsquad  966 12 446
+spectatorsquad  967 12 446
+spectatorsquad  955 12 446
+spectatorsquad  952 12 446
+spectatorsquad  951 12 446
+spectatorsquad  950 12 446
+bombersquad     997 1 992
+
+sim
+cap on
+
+
+at 1 simseconds spectatorsquad  997 12 916
+
+at 4 simseconds bombsquad 997 3 916
+at 8 simseconds spectatorsquad  997 5 916
+
+at 15 simseconds explode 992 2
+at 25 simseconds combovid cam1 cam2 cam3 cam4
+

@@ -1,0 +1,3 @@
+label regions
+color regions
+acc 1
