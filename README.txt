@@ -1,3 +1,19 @@
+## Description
+
+EvacSim is a massive crowd simulation developed for the 2006-2007 Department of Homeland Security (DHS) Southeastern Regional Initiative (SERI) grant at the University of Southern Mississippi by Matthew Bennett, Mike Johnson, and Mike Erwin.
+
+The simulation is used in training exercises for stadium and sports security personel as well as "what if" analysis. It was very advanced for the time, able to simulate 100000 simultaneous physically simulated flocking agents in egress from a stadium or surrounding areas such as roadways.
+
+The project took first prize out of 14 projects and secured SERI grant funding for two years. 
+
+https://www.youtube.com/watch?v=sNIrYu38E4E
+[![Koanity Demo](https://img.youtube.com/vi/sNIrYu38E4E/0.jpg)](https://www.youtube.com/watch?v=sNIrYu38E4E) 
+
+
+## Release notes
+
+March, 2008
+
 EvacSim 0.1
 
 Requirements:
