@@ -1,2 +1,0 @@
->> Welcome to the USM Computing EvacSim. <<
->> Type 'help' for a list of commands or 'demo' for a quick demonstration. <<

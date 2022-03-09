@@ -1,6 +1,0 @@
-load usm.obj 10
-cap on
-acc 5
-loadcams usmcams.txt
-sim
-
